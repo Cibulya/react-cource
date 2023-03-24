@@ -1,0 +1,82 @@
+{
+    "ae86": {
+        "name": "Toyota Sprinter Trueno AE86",
+        "picture": "https://raw.githubusercontent.com/Cibulya/initial_D_cars/main/Toyota_Sprinter_Trueno_AE86.jpg",
+        "year": "1983—1987",
+        "drive": "RWD",
+        "enginePower": "85-170",
+        "about": "The fourth generation of the Corolla Levin and Sprinter Trueno was released in 1983 and was offered in 2-door coupé and 3-door liftback body styles. It was the last in the series to use the front-engine, rear-wheel drive layout, carried over from the previous generation. In this generation, the Corolla Levin came with fixed rectangular headlights, while the Sprinter Trueno distinguished itself from the Corolla Levin with its retractable pop-up headlights. The American Corolla SR-5 and GT-S had the same front-end as the Japanese Trueno, complete with retractable headlights, although it had different and longer bumpers in the front and rear so as to meet US federal standards. European Corolla GTs had the same front-end as the Corolla Levin."
+    },
+    "subaru": {
+        "name": "Subaru WRX STI Type R",
+        "picture": "https://github.com/Cibulya/initial_D_cars/blob/main/Subaru_WRX_STI_Type_R.jpg?raw=true",
+        "year": "1994-1996",
+        "drive": "AWD",
+        "enginePower": "256-271",
+        "about": "The first STi was known simply as 'WRX STi version', with 100 per month were produced starting from February 1994. It had 250 PS (184 kW; 247 bhp). This version of the STi was the only version where the standard cars were taken at the end of the assembly line and replaced by STi parts. A STi version of the Type RA was also offered, again with many amenities deleted to reduce weight and cost. Producing 275 PS (202 kW; 271 bhp), this version of the WRX STi came with a Driver Controlled Center Differential (DCCD). This device was an electromechanical differential that could lock the differential."
+    },
+    "mazdaOld": {
+        "name": "Mazda RX-7 Turbo II (FC)",
+        "picture": "https://github.com/Cibulya/initial_D_cars/blob/main/Mazda_RX-7_Turbo_II.jpg?raw=true",
+        "year": "1985-1992",
+        "drive": "RWD",
+        "enginePower": "181",
+        "about": "The second generation of the RX-7 ('FC', VIN begins JM1FC3 or JMZFC1), still known as the Mazda Savanna RX-7 in Japan, featured a complete restyling much like similar sports cars of the era such as the Nissan 300ZX. Mazda's development team, led by Chief Project Engineer Akio Uchiyama (内山 昭朗), chose to focus on the American market when designing the FC, where the majority of first-generation of the RX-7 models had been sold. The team drew inspiration from successful sports cars that were popular at the time, such as studying the suspension design of the Porsche 928."
+    },
+    "mazdarx7": {
+        "name": "Mazda RX-7 Twin-Turbo (FD)",
+        "picture": "https://github.com/Cibulya/initial_D_cars/blob/main/Mazda_RX-7_Twin-Turbo.jpg?raw=true",
+        "year": "1992-1997",
+        "drive": "RWD",
+        "enginePower": "252",
+        "about": "The third generation RX-7, FD (chassis code FD3S for Japan and JM1FD for the North America), featured an updated body design. The 13B-REW was the first-ever mass-produced sequential twin-turbocharger system to be exported from Japan,[17] boosting power to 255 PS (188 kW; 252 hp) in 1992 and finally 280 PS (206 kW; 276 hp) by the time production ended in Japan in 2002."
+    },
+    "skyline": {
+        "name": "Nissan Skyline GT-R (R32)",
+        "picture": "https://github.com/Cibulya/initial_D_cars/blob/main/Nissan_Skyline_GT-R.jpg?raw=true",
+        "year": "1989-1994",
+        "drive": "RWD",
+        "enginePower": "280",
+        "about": "After discontinuing the Skyline GT-R in 1973, Nissan revived the GT-R nameplate again in 1989. At the time Nissan was competing in Group A Racing with the Skyline GTS-R. Nissan wanted to retire the GTS-R in favor of a more competitive vehicle. The new generation of the GT-R, E-BNR32 chassis (commonly shortened to R32), was designed to dominate Group A class racing."
+    },
+    "lancer": {
+        "name": "Mitsubishi Lancer Evo IV",
+        "picture": "https://github.com/Cibulya/initial_D_cars/blob/main/Mitsubishi_Lancer_Evo_IV.jpg?raw=true",
+        "year": "1996-1998",
+        "drive": "AWD",
+        "enginePower": "280",
+        "about": "The Lancer platform was redesigned in 1996, and along with it, the Evolution. The engine and transaxle were rotated 180° to better balance the weight and eliminate torque steer."
+    },
+    "silvia": {
+        "name": "Nissan Silvia (S13)",
+        "picture": "https://github.com/Cibulya/initial_D_cars/blob/main/Nissan_Silvia.jpg?raw=true",
+        "year": "1988-1994",
+        "drive": "RWD",
+        "enginePower": "140",
+        "about": "The S13 Silvia was introduced in mid-1988 and was immensely popular in Japan. Upon its introduction, it won the 1988 Car of the Year Japan Award. The Silvia was no longer exported, however; rebadged 180SXs were instead sold in most markets. European versions of this car were still known as the 200SX. In North America, the S13 (with the 180SX front in all three different body-styles) was known as the 240SX. The 200SX nameplate was on hiatus in that region but would return on a 2-door coupé version of the B14 Nissan Sunny/Sentra (1995-99), itself based on the Japan-only 2-door Nissan Lucino. Following industry trends, the S13 Silvia switched to relampable fixed headlights. Projector optics were offered as an option."
+    },
+    "180sx": {
+        "name": "Nissan 180SX/Silvia (Sileighty)",
+        "picture": "https://github.com/Cibulya/initial_D_cars/blob/main/Nissan_Silvia.jpg?raw=true",
+        "year": "1988-1994",
+        "drive": "RWD",
+        "enginePower": "140",
+        "about": "The S13 Silvia was introduced in mid-1988 and was immensely popular in Japan. Upon its introduction, it won the 1988 Car of the Year Japan Award. The Silvia was no longer exported, however; rebadged 180SXs were instead sold in most markets. European versions of this car were still known as the 200SX. In North America, the S13 (with the 180SX front in all three different body-styles) was known as the 240SX. The 200SX nameplate was on hiatus in that region but would return on a 2-door coupé version of the B14 Nissan Sunny/Sentra (1995-99), itself based on the Japan-only 2-door Nissan Lucino. Following industry trends, the S13 Silvia switched to relampable fixed headlights. Projector optics were offered as an option."
+    },
+    "civic": {
+        "name": "Honda Civic Type-R (EK9)",
+        "picture": "https://github.com/Cibulya/initial_D_cars/blob/main/Honda_Civic_Type-R.jpg?raw=true",
+        "year": "1996-2000",
+        "drive": "FWD",
+        "enginePower": "185",
+        "about": "Available as a hatchback, coupé, or sedan. It included all standard equipment from CX plus tilt steering and AM/FM high-power (4 x 20-watt) stereo with clock. Power steering was standard on all sedans, and on the coupes when ordered with automatic transmission. For 1997, the DX added 14-inch wheels as standard equipment."
+    },
+    "s2000": {
+        "name": "Honda S2000 (AP1)",
+        "picture": "https://github.com/Cibulya/initial_D_cars/blob/main/Honda_S2000.jpg?raw=true",
+        "year": "1999-2003",
+        "drive": "FWD",
+        "enginePower": "237",
+        "about": "The Honda S2000 is an open top sports car that was manufactured by Japanese automobile manufacturer Honda, from 1999 until 2009. First shown as a concept car called the SSM at the Tokyo Motor Show in 1995, the production version was launched on April 15, 1999, to celebrate the company's 50th anniversary. The S2000 is named for its engine displacement of two litres, carrying on in the tradition of the S500, S600, and S800 roadsters of the 1960s."
+    }
+}
