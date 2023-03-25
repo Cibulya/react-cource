@@ -1,22 +1,24 @@
-import { HashRouter, Route, Routes } from 'react-router-dom';
+/* eslint-disable import/prefer-default-export */
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Header from './components/header/header';
 import AboutUs from './pages/aboutus';
-import NotFound from './pages/NotFound';
+import MainPage from './pages/main';
+import NotFoundPage from './pages/NotFound';
 
-export function App(): JSX.Element {
-    return (
-        <div>
-            <Routes>
-                <Route path="/" element={<AboutUs />} />
-                <Route path="*" element={<NotFound />} />
-            </Routes>
-        </div>
-    );
+class App extends React.Component {
+    render(): React.ReactNode {
+        return (
+            <>
+                <Header />
+                <Routes>
+                    <Route path="/" element={<MainPage />} />
+                    <Route path="/about" element={<AboutUs />} />
+                    <Route path="*" element={<NotFoundPage />} />
+                </Routes>
+            </>
+        );
+    }
 }
 
-export function WrappedApp() {
-    return (
-        <HashRouter>
-            <App />
-        </HashRouter>
-    );
-}
+export default App;
