@@ -1,0 +1,21 @@
+.form {
+  padding: 20px;
+  color: orange;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+label {
+  display: flex;
+  gap: 20px;
+}
+
+.radio {
+  display: flex;
+  gap: 20px;
+}
+
+.form__title {
+  font-size: 2em;
+}
