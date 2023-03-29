@@ -200,7 +200,8 @@ class FormComponent extends React.Component<object, InternalState> {
                 <div className="form__answers">
                     {this.state.formResults.map((result, i) => (
                         <FormAnswer
-                            key={this.state.formResults[i].name}
+                            // eslint-disable-next-line react/no-array-index-key
+                            key={i}
                             name={result.name}
                             date={result.date}
                             checkbox={result.checkbox}
