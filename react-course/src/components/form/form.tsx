@@ -190,6 +190,7 @@ class FormComponent extends React.Component<object, InternalState> {
                                 id="file"
                                 name="file"
                                 accept="image/*"
+                                required
                             />
                         </label>
                     </fieldset>
