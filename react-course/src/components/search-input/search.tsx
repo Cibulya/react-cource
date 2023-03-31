@@ -1,37 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './search.scss';
 
-class SearchInput extends React.Component<object, { search: string }> {
-    constructor(props: object) {
-        super(props);
-        this.state = { search: localStorage.getItem('search') || '' };
-    }
+function SearchInput(): JSX.Element {
+    const [value, setValue] = useState<string>(
+        localStorage.getItem('search') || ''
+    );
 
-    componentWillUnmount(): void {
-        const { search } = this.state;
-        localStorage.setItem('search', search);
-    }
-
-    onchange = (event: unknown) => {
-        this.setState({
-            search: ((event as Event).target as HTMLInputElement).value,
-        });
+    const onchange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setValue(e.currentTarget.value);
+        sessionStorage.setItem('search', value);
     };
 
-    render(): React.ReactNode {
-        const { search } = this.state;
-        return (
-            <form className="search__form">
-                <input
-                    className="search"
-                    type="search"
-                    value={search}
-                    placeholder="Search something"
-                    onChange={this.onchange}
-                />
-            </form>
-        );
-    }
+    useEffect(() => {
+        return () => {
+            localStorage.setItem(
+                'search',
+                sessionStorage.getItem('search') as string
+            );
+        };
+    }, []);
+
+    return (
+        <form className="search__form">
+            <input
+                onChange={onchange}
+                value={value}
+                className="search"
+                type="search"
+                placeholder="Search something"
+            />
+        </form>
+    );
 }
 
 export default SearchInput;

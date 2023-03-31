@@ -1,24 +1,25 @@
-import React from 'react';
 import carsJson from '../../assets/cars.json';
-import { CarList } from '../../inerfaces/car';
 import Card from '../card/card';
 import './cardlist.scss';
 
-class CardList extends React.Component {
-    render(): React.ReactNode {
-        const carArray: CarList = [];
-        carsJson.cars.forEach((car) => {
-            return carArray.push(car);
-        });
-
-        return (
-            <ul className="cars__cards" role="list">
-                {carArray.map((car, name) => (
-                    <Card key={car.name} cars={carArray[name]} />
-                ))}
-            </ul>
-        );
-    }
+function CardList(): JSX.Element {
+    return (
+        <ul className="cars__cards" role="list">
+            {carsJson.cars.map((car) => {
+                return (
+                    <Card
+                        key={car.name}
+                        name={car.name}
+                        picture={car.picture}
+                        year={car.year}
+                        enginePower={car.enginePower}
+                        drive={car.drive}
+                        about={car.about}
+                    />
+                );
+            })}
+        </ul>
+    );
 }
 
 export default CardList;

@@ -25,5 +25,6 @@ module.exports = {
         'react/require-render-return': 0,
         'react/destructuring-assignment': 0,
         'jsx-a11y/no-redundant-roles': 0,
+        'react-hooks/exhaustive-deps': 'warn',
     },
 };
