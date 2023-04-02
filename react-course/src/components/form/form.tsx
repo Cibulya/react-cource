@@ -1,220 +1,166 @@
-/* eslint-disable react/no-unused-state */
-import React from 'react';
-import { InternalState } from '../../inerfaces/formtypes';
+/* eslint-disable react/jsx-props-no-spreading */
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { SubmitHandler } from 'react-hook-form/dist/types';
+import { IFormElementsValues, TFormAnswers } from '../../inerfaces/formtypes';
+import { options } from '../../inerfaces/inputTypes';
 import FormAnswer from '../formcardanswer/formcardanswer';
 import './form.scss';
 
-const options = [
-    {
-        label: 'Apple',
-        value: 'apple',
-    },
-    {
-        label: 'Mango',
-        value: 'mango',
-    },
-    {
-        label: 'Banana',
-        value: 'banana',
-    },
-    {
-        label: 'Pineapple',
-        value: 'pineapple',
-    },
-];
+function FormComponent() {
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState,
+        // без этой штуки не работает очистка формулы!
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        formState: { isSubmitSuccessful, errors },
+    } = useForm<IFormElementsValues>({
+        defaultValues: {
+            fruits: '',
+        },
+    });
 
-class FormComponent extends React.Component<object, InternalState> {
-    formInput: React.RefObject<HTMLInputElement>;
+    const formAnswers: TFormAnswers = [];
+    const [answers, setAnswers] = useState(formAnswers);
 
-    formSelect: React.RefObject<HTMLSelectElement>;
-
-    constructor(props: InternalState) {
-        super(props);
-        this.formSelect = React.createRef();
-        this.formInput = React.createRef();
-        this.state = {
-            formElementsValues: {
-                name: '',
-                date: '',
-                checkbox: true,
-                pill: '',
-                fruits: '',
-                file: '',
-            },
-            formResults: [],
-        };
-        this.getFormInfo = this.getFormInfo.bind(this);
-        this.getInputsValues = this.getInputsValues.bind(this);
-    }
-
-    getInputsValues(
-        event:
-            | React.ChangeEvent<HTMLInputElement>
-            | React.ChangeEvent<HTMLSelectElement>
-    ) {
-        this.setState((prevState) => ({
-            ...prevState,
-            formElementsValues: {
-                ...prevState.formElementsValues,
-                [event.target.name]: event.target.value,
-            },
-        }));
-    }
-
-    getFormInfo(event: React.FormEvent<HTMLFormElement>) {
-        event.preventDefault();
-        if (this.formInput.current?.files) {
-            const imagePreview = URL.createObjectURL(
-                this.formInput.current.files[0]
-            );
-            this.setState((prevState) => ({
-                ...prevState,
-                formElementsValues: {
-                    ...prevState.formElementsValues,
-                    file: imagePreview,
-                },
-            }));
+    const onSubmit: SubmitHandler<IFormElementsValues> = (data) => {
+        const fileImage = URL.createObjectURL(data.file[0] as unknown as Blob);
+        const newDataWithFile = Object.assign(data);
+        newDataWithFile.id = Date.now();
+        if (data.checkbox === true) {
+            newDataWithFile.checkbox = 'truth';
         }
-        this.setState((prevState) => ({
-            ...prevState,
-            formResults: [
-                ...prevState.formResults,
-                prevState.formElementsValues,
-            ],
-        }));
-        (event.target as HTMLFormElement).reset();
-        this.setState({
-            formElementsValues: {
-                name: '',
-                date: '',
-                checkbox: false,
-                pill: '',
-                fruits: '',
-                file: '',
-            },
-        });
-    }
+        newDataWithFile.file = fileImage;
+        setAnswers([...answers, newDataWithFile]);
+    };
 
-    render(): React.ReactNode {
-        return (
-            <>
-                <form className="form" onSubmit={this.getFormInfo}>
-                    <p className="form__title">Form</p>
-                    <fieldset>
-                        <label htmlFor="name">
-                            Name:
-                            <input
-                                onChange={this.getInputsValues}
-                                ref={this.formInput}
-                                type="text"
-                                name="name"
-                                required
-                            />
-                        </label>
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="date">
-                            Date:
-                            <input
-                                onChange={this.getInputsValues}
-                                ref={this.formInput}
-                                type="date"
-                                name="date"
-                                required
-                            />
-                        </label>
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="checkbox">
-                            Pablo:
-                            <input
-                                onChange={this.getInputsValues}
-                                ref={this.formInput}
-                                type="checkbox"
-                                name="checkbox"
-                                required
-                            />
-                        </label>
-                    </fieldset>
-                    <fieldset>
-                        <div className="radio">
-                            <label htmlFor="red">
-                                RED
-                                <input
-                                    onChange={this.getInputsValues}
-                                    ref={this.formInput}
-                                    type="radio"
-                                    value="Red"
-                                    name="pill"
-                                    id="red"
-                                />
-                            </label>
-                            <label htmlFor="blue">
-                                <input
-                                    onChange={this.getInputsValues}
-                                    ref={this.formInput}
-                                    type="radio"
-                                    value="Blue"
-                                    name="pill"
-                                    id="blue"
-                                />
-                                BLUE
-                            </label>
-                        </div>
-                    </fieldset>
-                    <fieldset>
-                        <div>
-                            <select
-                                onChange={this.getInputsValues}
-                                ref={this.formSelect}
-                                name="fruits"
-                            >
-                                {options.map((option) => (
-                                    <option
-                                        key={option.value}
-                                        value={option.value}
-                                    >
-                                        {option.label}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="file">
-                            Image file:
-                            <input
-                                ref={this.formInput}
-                                onChange={this.getInputsValues}
-                                type="file"
-                                id="file"
-                                name="file"
-                                accept="image/*"
-                                required
-                            />
-                        </label>
-                    </fieldset>
-                    <button className="form__submit" type="submit">
-                        submit
-                    </button>
-                </form>
-                <div className="form__answers">
-                    {this.state.formResults.map((result, i) => (
-                        <FormAnswer
-                            // eslint-disable-next-line react/no-array-index-key
-                            key={i}
-                            name={result.name}
-                            date={result.date}
-                            checkbox={result.checkbox}
-                            pill={result.pill}
-                            fruits={result.fruits}
-                            file={result.file}
+    useEffect(() => {
+        if (formState.isSubmitSuccessful) {
+            reset({
+                name: '',
+                file: '',
+                fruits: '',
+                date: '',
+                pill: '',
+                checkbox: false,
+            });
+        }
+    }, [formState, reset]);
+
+    return (
+        <div>
+            <form className="form" onSubmit={handleSubmit(onSubmit)}>
+                <p className="form__title">Form</p>
+                <label htmlFor="name">
+                    <span>Name:</span>
+                    <input
+                        {...register('name', {
+                            required: 'This field is required)',
+                            minLength: {
+                                value: 5,
+                                message: 'Min length 5 symbols',
+                            },
+                        })}
+                        type="text"
+                        placeholder="Enter your name"
+                        name="name"
+                    />
+                    <p className="form__error">{errors.name?.message}</p>
+                </label>
+                <label htmlFor="date">
+                    Pick some date:
+                    <input
+                        {...register('date', {
+                            required:
+                                'This field is required,please choose correct date)',
+                        })}
+                        type="date"
+                        name="date"
+                    />
+                    <p className="form__error">{errors.date?.message}</p>
+                </label>
+                <label className="form__checkbox" htmlFor="checkbox">
+                    Pablo
+                    <input
+                        {...register('checkbox', {
+                            required:
+                                'This field is requred, please click on checkbox)',
+                        })}
+                        type="checkbox"
+                        name="checkbox"
+                    />
+                    <p className="form__error">{errors.checkbox?.message}</p>
+                </label>
+                <div className="radio">
+                    <label className="form__checkbox" htmlFor="pill">
+                        Red
+                        <input
+                            {...register('pill')}
+                            type="radio"
+                            value="Red"
+                            name="pill"
                         />
-                    ))}
+                        <p className="form__error">{errors.pill?.message}</p>
+                    </label>
+                    <label className="form__checkbox" htmlFor="pill">
+                        Blue
+                        <input
+                            {...register('pill')}
+                            type="radio"
+                            value="Blue"
+                            name="pill"
+                        />
+                        <p className="form__error">{errors.pill?.message}</p>
+                    </label>
                 </div>
-            </>
-        );
-    }
+                <select
+                    {...register('fruits', {
+                        required:
+                            'This field is requred,please choose one of options)',
+                    })}
+                    className="form__select"
+                    name="fruits"
+                >
+                    {options.map((option) => (
+                        <option key={option.value} value={option.value}>
+                            {option.label}
+                        </option>
+                    ))}
+                </select>
+                <p className="form__error">{errors.fruits?.message}</p>
+                <label htmlFor="file">
+                    <input
+                        {...register('file', {
+                            required:
+                                'This field is requred, please upload your file)',
+                        })}
+                        className="form__file"
+                        type="file"
+                        name="file"
+                        accept="image/*"
+                    />
+                    <p className="form__error">{errors.file?.message}</p>
+                </label>
+                <input className="form__submit" type="submit" />
+            </form>
+            <div className="form__answers">
+                {answers.map((answer) => (
+                    <FormAnswer
+                        key={answer.id}
+                        id={answer.id}
+                        name={answer.name}
+                        date={answer.date}
+                        checkbox={answer.checkbox}
+                        pill={answer.pill}
+                        file={answer.file}
+                        fruits={answer.fruits}
+                    />
+                ))}
+            </div>
+        </div>
+    );
 }
 
 export default FormComponent;

@@ -1,14 +1,16 @@
-export type FormElementsValues = {
+export interface IFormElementsValues {
+    id: number;
     name: string;
     date: string;
     checkbox: boolean;
-    // pill: 'Red' | 'Blue' | null;
     pill: string;
     fruits: string;
     file: string;
-};
+}
 
-export type InternalState = {
-    formElementsValues: FormElementsValues;
-    formResults: FormElementsValues[];
-};
+export interface IFormStates {
+    values: IFormElementsValues;
+    formResults: IFormElementsValues[];
+}
+
+export type TFormAnswers = IFormElementsValues[];

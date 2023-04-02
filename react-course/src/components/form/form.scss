@@ -10,15 +10,30 @@
 label {
   display: flex;
   gap: 20px;
+  flex-direction: column;
 }
 
+input {
+  max-width: 120px;
+}
+.form__checkbox {
+  flex-direction: row;
+}
 .radio {
   display: flex;
   gap: 20px;
 }
 
+.form__select {
+  max-width: 120px;
+}
+
 .form__title {
   font-size: 2em;
+}
+
+.form__file {
+  max-width: fit-content;
 }
 
 .form__answers {
@@ -36,4 +51,8 @@ label {
   border: 1px solid orange;
   background: green;
   font-size: 20px;
+}
+
+.form__error {
+  color: red;
 }
