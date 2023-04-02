@@ -3,9 +3,9 @@ import { describe, it } from 'vitest';
 import FormComponent from './form';
 
 describe('Form', () => {
-    it('Renders car card', () => {
+    it('Renders form', () => {
         render(<FormComponent />);
         expect(screen.getByText(/Name:/i)).toBeInTheDocument();
-        expect(screen.getAllByLabelText('Image file:'));
+        expect(screen.getByText(/Image file:/i)).toBeInTheDocument();
     });
 });

@@ -63,6 +63,7 @@ function FormComponent() {
                                 message: 'Min length 5 symbols',
                             },
                         })}
+                        className="form__input"
                         type="text"
                         placeholder="Enter your name"
                         name="name"
@@ -72,6 +73,7 @@ function FormComponent() {
                 <label htmlFor="date">
                     Pick some date:
                     <input
+                        className="form__input"
                         {...register('date', {
                             required:
                                 'This field is required,please choose correct date)',
@@ -84,6 +86,7 @@ function FormComponent() {
                 <label className="form__checkbox" htmlFor="checkbox">
                     Pablo
                     <input
+                        className="form__input"
                         {...register('checkbox', {
                             required:
                                 'This field is requred, please click on checkbox)',
@@ -97,7 +100,10 @@ function FormComponent() {
                     <label className="form__checkbox" htmlFor="pill">
                         Red
                         <input
-                            {...register('pill')}
+                            {...register('pill', {
+                                required:
+                                    'This field is required, please choose pill',
+                            })}
                             type="radio"
                             value="Red"
                             name="pill"
@@ -107,7 +113,10 @@ function FormComponent() {
                     <label className="form__checkbox" htmlFor="pill">
                         Blue
                         <input
-                            {...register('pill')}
+                            {...register('pill', {
+                                required:
+                                    'This field is required, please choose pill',
+                            })}
                             type="radio"
                             value="Blue"
                             name="pill"
@@ -131,6 +140,7 @@ function FormComponent() {
                 </select>
                 <p className="form__error">{errors.fruits?.message}</p>
                 <label htmlFor="file">
+                    Image file:
                     <input
                         {...register('file', {
                             required:

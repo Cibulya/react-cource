@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './search.scss';
 
 function SearchInput(): JSX.Element {
     const [value, setValue] = useState<string>(
         localStorage.getItem('search') || ''
     );
+    const inpReff = useRef(value);
 
     const onchange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.currentTarget.value);
-        sessionStorage.setItem('search', value);
     };
 
     useEffect(() => {
+        inpReff.current = value;
+    }, [value]);
+
+    useEffect(() => {
         return () => {
-            localStorage.setItem(
-                'search',
-                sessionStorage.getItem('search') as string
-            );
+            localStorage.setItem('search', inpReff.current);
         };
     }, []);
 
@@ -28,6 +29,7 @@ function SearchInput(): JSX.Element {
                 className="search"
                 type="search"
                 placeholder="Search something"
+                ref={() => value}
             />
         </form>
     );
