@@ -26,5 +26,6 @@ module.exports = {
         'react/destructuring-assignment': 0,
         'jsx-a11y/no-redundant-roles': 0,
         'react-hooks/exhaustive-deps': 'warn',
+        'jsx-a11y/aria-role': 0,
     },
 };

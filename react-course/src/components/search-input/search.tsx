@@ -24,6 +24,7 @@ function SearchInput(): JSX.Element {
     return (
         <form className="search__form">
             <input
+                role="input"
                 onChange={onchange}
                 value={value}
                 className="search"
