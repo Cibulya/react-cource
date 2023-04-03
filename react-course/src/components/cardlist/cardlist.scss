@@ -1,0 +1,8 @@
+.cars__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 300px));
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  align-items: stretch;
+}

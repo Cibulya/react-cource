@@ -1,0 +1,22 @@
+.not-found-page {
+  color: orange;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30%;
+  gap: 50px;
+}
+
+.not-found-page__description {
+  color: red;
+  font-size: 33px;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 40px;
+}
+
+.not-found-page__link {
+  font-size: 22px;
+  color: orange;
+}

@@ -1,0 +1,18 @@
+.about__page {
+  font-family: "Acme", sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: orange;
+  padding: 20px;
+  font-size: 22px;
+  line-height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  position: relative;
+}
+
+.about__text {
+  transform: translateY(50%);
+}
