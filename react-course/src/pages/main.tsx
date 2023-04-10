@@ -9,6 +9,15 @@ function MainPage() {
     const [data, setData] = useState<Character[]>([]);
     const [query, setQuery] = useState('');
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+    async function filter() {
+        setLoading(true);
+        const cards = await PostService.getData();
+        setData(cards.results);
+        setTimeout(() => {
+            setLoading(false);
+        }, 500);
+    }
 
     function onChange(e: React.KeyboardEvent<HTMLInputElement>): void {
         if (e.key === 'Enter') {
@@ -17,25 +26,23 @@ function MainPage() {
     }
 
     useEffect(() => {
-        async function filter() {
-            setLoading(true);
-            const cards = await PostService.getData();
-            setData(cards.results);
-            setTimeout(() => {
-                setLoading(false);
-            }, 500);
-        }
         filter();
     }, []);
 
     useEffect(() => {
         async function filteredFetch() {
-            const filtered = await PostService.getFilteredData(query);
-            setLoading(true);
-            setTimeout(() => {
-                setLoading(false);
-                setData(filtered.results);
-            }, 500);
+            try {
+                const filtered = await PostService.getFilteredData(query);
+                setLoading(true);
+                setTimeout(() => {
+                    setLoading(false);
+                    setData(filtered.results);
+                }, 500);
+            } catch (e) {
+                if (e) {
+                    setData([]);
+                }
+            }
         }
         filteredFetch();
     }, [query]);

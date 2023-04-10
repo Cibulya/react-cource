@@ -1,10 +1,18 @@
 /* eslint-disable react/function-component-definition */
 import { CharForCards, ResultsData } from '../../inerfaces/apiData';
 import ApiCard from '../card-for-api/card-for-api';
+import ErrorMessage from '../error/error';
 
 function ApiCardList(posts: ResultsData) {
     if (!posts.results.length) {
-        return <h1>There is no data</h1>;
+        return (
+            <ErrorMessage>
+                <div>
+                    Something went wrong, an error occurred ... We have paws
+                    ....
+                </div>
+            </ErrorMessage>
+        );
     }
     return (
         <ul className="cars__cards">
