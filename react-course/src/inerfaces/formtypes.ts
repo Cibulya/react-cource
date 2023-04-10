@@ -14,3 +14,7 @@ export interface IFormStates {
 }
 
 export type TFormAnswers = IFormElementsValues[];
+
+export interface ISearchInput {
+    value: string;
+}

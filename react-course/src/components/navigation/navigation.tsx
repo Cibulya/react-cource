@@ -13,6 +13,9 @@ function HeaderNav() {
             <Link to="/form" className="nav__link">
                 Form
             </Link>
+            <Link to="/cars" className="nav__link">
+                Cars
+            </Link>
         </nav>
     );
 }

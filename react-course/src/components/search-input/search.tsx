@@ -22,7 +22,12 @@ function SearchInput(): JSX.Element {
     }, []);
 
     return (
-        <form className="search__form">
+        <form
+            className="search__form"
+            onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
+                event.preventDefault();
+            }}
+        >
             <input
                 role="input"
                 onChange={onchange}

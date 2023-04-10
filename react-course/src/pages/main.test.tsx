@@ -1,11 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it } from 'vitest';
-import carsJson from '../assets/cars.json';
-import Card from '../components/card/card';
+import ApiCardList from '../components/card-list-for-api/cardListForApi';
 import CardList from '../components/cardlist/cardList';
+import { firstfetch, mortySearch, rickSearch } from '../mocks/handlers';
 import MainPage from './main';
-
-const randomCar = carsJson.cars[0];
 
 describe('Renders main page', () => {
     it('Renders About TEXT', () => {
@@ -20,18 +18,19 @@ describe('Renders main page', () => {
         expect(cardList).toHaveClass('cars__cards');
         expect(cardList).toContainHTML('li');
     });
-    it('Render car card', () => {
-        render(
-            <Card
-                name={randomCar.name}
-                picture={randomCar.picture}
-                year={randomCar.year}
-                drive={randomCar.drive}
-                enginePower={randomCar.enginePower}
-                about={randomCar.about}
-            />
-        );
-        const card = screen.getByRole('listitem');
-        expect(card).toBeInTheDocument();
+    test('Get all Data first Fetch', async () => {
+        const { findByText } = render(<ApiCardList results={firstfetch} />);
+        expect(await findByText(/Rick Sanchez/i)).toBeInTheDocument();
+    });
+    test('Get Morty cards', async () => {
+        const { findByText } = render(<ApiCardList results={mortySearch} />);
+        expect(await findByText(/Alien Morty/i)).toBeInTheDocument();
+        expect(await findByText(/Aqua Morty/i)).toBeInTheDocument();
+        expect(await findByText(/Morty Smith/i)).toBeInTheDocument();
+        expect(await findByText(/Big Head Morty/i)).toBeInTheDocument();
+    });
+    test('Get Ricks cards', async () => {
+        const { findByText } = render(<ApiCardList results={rickSearch} />);
+        expect(await findByText(/Rick Sanchez/i)).toBeInTheDocument();
     });
 });

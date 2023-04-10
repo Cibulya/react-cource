@@ -1,0 +1,26 @@
+.loading {
+  width: 200px;
+  height: 200px;
+  border: 5px dotted blue;
+  animation: rotate infinite 3s linear;
+  border-radius: 50%;
+  margin: 50px auto;
+  background-image: url("./pepe.gif");
+  background-size: 75%;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  padding: 15px;
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg) scale(0.5);
+    }
+    to {
+      transform: rotate(360deg) scale(1);
+    }
+  }
+}
+
+.loading__img {
+  object-fit: contain;
+}

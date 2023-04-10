@@ -27,5 +27,6 @@ module.exports = {
         'jsx-a11y/no-redundant-roles': 0,
         'react-hooks/exhaustive-deps': 'warn',
         'jsx-a11y/aria-role': 0,
+        'jsx-a11y/no-noninteractive-element-to-interactive-role': 0,
     },
 };
