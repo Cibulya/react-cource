@@ -21,7 +21,9 @@ function MainPage() {
             setLoading(true);
             const cards = await PostService.getData();
             setData(cards.results);
-            setLoading(false);
+            setTimeout(() => {
+                setLoading(false);
+            }, 500);
         }
         filter();
     }, []);
@@ -29,7 +31,11 @@ function MainPage() {
     useEffect(() => {
         async function filteredFetch() {
             const filtered = await PostService.getFilteredData(query);
-            setData(filtered.results);
+            setLoading(true);
+            setTimeout(() => {
+                setLoading(false);
+                setData(filtered.results);
+            }, 500);
         }
         filteredFetch();
     }, [query]);
@@ -53,7 +59,6 @@ function MainPage() {
                     />
                 </label>
             </form>
-            {/* {postError && <div>Something went wrong we got an ERRROR</div>} */}
             {loading ? <Loading /> : <ApiCardList results={data} />}
         </div>
     );
