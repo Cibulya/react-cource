@@ -1,25 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
+import ISearch from '../../inerfaces/searchInput';
 import './search.scss';
 
-function SearchInput(): JSX.Element {
-    const [value, setValue] = useState<string>(
-        localStorage.getItem('search') || ''
-    );
-    const inpReff = useRef(value);
-
-    const onchange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(e.currentTarget.value);
-    };
-
-    useEffect(() => {
-        inpReff.current = value;
-    }, [value]);
-
-    useEffect(() => {
-        return () => {
-            localStorage.setItem('search', inpReff.current);
-        };
-    }, []);
+function SearchInput(props: ISearch): JSX.Element {
+    const { initValue, setSearchValue } = props;
 
     return (
         <form
@@ -30,12 +14,11 @@ function SearchInput(): JSX.Element {
         >
             <input
                 role="input"
-                onChange={onchange}
-                value={value}
+                onKeyDown={setSearchValue}
+                defaultValue={initValue}
                 className="search"
                 type="search"
                 placeholder="Search something"
-                ref={() => value}
             />
         </form>
     );
