@@ -9,6 +9,7 @@
         "preview": "vite preview",
         "lint": " eslint \"**/*.{ts,tsx}\" --fix",
         "test": "vitest",
+        "test:ui": "vitest --ui",
         "lintCheck": "npx eslint src"
     },
     "dependencies": {
@@ -28,6 +29,7 @@
         "@typescript-eslint/parser": "^5.56.0",
         "@vitejs/plugin-react": "^3.1.0",
         "@vitest/coverage-c8": "^0.29.7",
+        "@vitest/ui": "^0.30.0",
         "eslint": "^8.2.0",
         "eslint-config-airbnb": "^19.0.4",
         "eslint-config-airbnb-typescript": "^17.0.0",
