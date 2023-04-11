@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-bind */
 import { useEffect, useState } from 'react';
 import PostService from '../api/postService';
 import ApiCardList from '../components/card-list-for-api/cardListForApi';
@@ -35,12 +34,12 @@ function MainPage() {
         }, 500);
     }
 
-    function onChange(e: React.KeyboardEvent<HTMLInputElement>): void {
+    const onChange = (e: React.KeyboardEvent<HTMLInputElement>): void => {
         if (e.key === 'Enter') {
             localStorage.setItem('search', e.currentTarget.value);
             setQuery(localStorage.getItem('search') as string);
         }
-    }
+    };
 
     useEffect(() => {
         if (query !== '') {
