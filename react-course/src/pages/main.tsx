@@ -1,59 +1,38 @@
-import { useEffect, useState } from 'react';
-import PostService from '../api/postService';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
+import cardsAPI from '../api/card-service';
 import ApiCardList from '../components/card-list-for-api/cardListForApi';
+import ErrorMessage from '../components/error/error';
 import Loading from '../components/loadingThing/loading';
 import SearchInput from '../components/search-input/search';
 import '../components/search-input/search.scss';
-import { Character } from '../inerfaces/apiData';
+import { useAppSelector } from '../hooks/redux';
 
 function MainPage() {
-    const [data, setData] = useState<Character[]>([]);
-    const [query, setQuery] = useState(localStorage.getItem('search') || '');
-    const [loading, setLoading] = useState(false);
+    const { searchQuery } = useAppSelector((state) => state.cardReducer);
 
-    async function filteredFetch() {
-        try {
-            const filtered = await PostService.getFilteredData(query);
-            setLoading(true);
-            setTimeout(() => {
-                setLoading(false);
-                setData(filtered.results);
-            }, 500);
-        } catch (e) {
-            if (e) {
-                setData([]);
-            }
-        }
-    }
-    async function firstFetch() {
-        setLoading(true);
-        const cards = await PostService.getData();
-        setData(cards.results);
-        setTimeout(() => {
-            setLoading(false);
-        }, 500);
-    }
-
-    const onChange = (e: React.KeyboardEvent<HTMLInputElement>): void => {
-        if (e.key === 'Enter') {
-            localStorage.setItem('search', e.currentTarget.value);
-            setQuery(localStorage.getItem('search') as string);
-        }
-    };
-
-    useEffect(() => {
-        if (query !== '') {
-            setQuery(query);
-            filteredFetch();
-        } else {
-            firstFetch();
-        }
-    }, [query]);
+    const {
+        data: filteredFetch,
+        isLoading: loadingFiltered,
+        isError: fiteredFetchError,
+        error: errorText,
+    } = cardsAPI.useFilterFetchQuery(searchQuery);
 
     return (
         <div>
-            <SearchInput initValue={query} setSearchValue={onChange} />
-            {loading ? <Loading /> : <ApiCardList results={data} />}
+            <SearchInput />
+            {loadingFiltered && <Loading />}
+            {fiteredFetchError ? (
+                <ErrorMessage>
+                    Something went wrong, an error occurred ... We have paws
+                    ....
+                    <div>
+                        Error code: {(errorText as FetchBaseQueryError).status}
+                    </div>
+                </ErrorMessage>
+            ) : null}
+            {!fiteredFetchError && filteredFetch && (
+                <ApiCardList results={filteredFetch.results} />
+            )}
         </div>
     );
 }

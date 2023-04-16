@@ -4,4 +4,5 @@ export interface ModalWindow {
     children?: ReactNode;
     isOpen: boolean;
     toggle: () => void;
+    id: number;
 }

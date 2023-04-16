@@ -1,10 +1,18 @@
 import React from 'react';
-import ISearch from '../../inerfaces/searchInput';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { cardSlice } from '../../rtk/store/reducers/CardSlice';
 import './search.scss';
 
-function SearchInput(props: ISearch): JSX.Element {
-    const { initValue, setSearchValue } = props;
+function SearchInput(): JSX.Element {
+    const { searchQuery } = useAppSelector((state) => state.cardReducer);
+    const { setSearchQuery } = cardSlice.actions;
+    const dispatch = useAppDispatch();
 
+    const onKeyEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            dispatch(setSearchQuery(e.currentTarget.value));
+        }
+    };
     return (
         <form
             className="search__form"
@@ -14,10 +22,10 @@ function SearchInput(props: ISearch): JSX.Element {
         >
             <input
                 role="input"
-                onKeyDown={setSearchValue}
-                defaultValue={initValue}
+                onKeyDown={onKeyEnter}
+                defaultValue={searchQuery}
                 className="search"
-                type="search"
+                type="text"
                 placeholder="Search something"
             />
         </form>

@@ -1458,10 +1458,10 @@ export const handlers = [
     rest.get(RequestLinks.firstFetch, (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(firstfetch));
     }),
-    rest.get(RequestLinks.fetchFilter, (req, res, ctx) => {
+    rest.get(RequestLinks.firstFetch, (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(mortySearch));
     }),
-    rest.get(`${RequestLinks.fetchFilter}rick`, (req, res, ctx) => {
+    rest.get(RequestLinks.firstFetch, (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(rickSearch));
     }),
 ];

@@ -6,33 +6,14 @@ import Modal from '../modal/modal';
 function ApiCard({
     name,
     image,
-    created,
-    gender,
-    location,
     id,
-    status,
-}: CharForCards) {
+}: Pick<CharForCards, 'name' | 'image' | 'id'>) {
     const { isOpen, toggle } = useModal();
     return (
         <li onClick={toggle} role="button">
             <p>{name}</p>
             <img src={image} alt={name} />
-            {isOpen && (
-                <Modal isOpen={isOpen} toggle={toggle}>
-                    <div
-                        className="modal-box"
-                        onClickCapture={(e) => e.stopPropagation()}
-                    >
-                        <p>Character name: {name}</p>
-                        <img src={image} alt={name} />
-                        <p>Character status: {status}</p>
-                        <p>Character created: {created}</p>
-                        <p>Character gender: {gender}</p>
-                        <p>Character DB id: {id}</p>
-                        <p>Character location name: {location.name}</p>
-                    </div>
-                </Modal>
-            )}
+            {isOpen && <Modal isOpen={isOpen} toggle={toggle} id={id} />}
         </li>
     );
 }

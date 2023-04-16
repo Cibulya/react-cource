@@ -1,3 +1,8 @@
+export interface CardsState {
+    cards: Character[];
+    searchQuery: string;
+}
+
 export interface Info {
     count: number;
     next: string;
@@ -27,7 +32,7 @@ export interface Character {
 }
 
 export interface ApiData {
-    info: Info | undefined;
+    info: Info;
     results: Character[];
 }
 

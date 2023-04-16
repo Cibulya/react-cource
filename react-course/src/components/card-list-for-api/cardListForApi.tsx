@@ -1,33 +1,19 @@
-/* eslint-disable react/function-component-definition */
 import { CharForCards, ResultsData } from '../../inerfaces/apiData';
 import ApiCard from '../card-for-api/card-for-api';
-import ErrorMessage from '../error/error';
 
 function ApiCardList(posts: ResultsData) {
-    if (!posts.results.length) {
-        return (
-            <ErrorMessage>
-                <div>
-                    Something went wrong, an error occurred ... We have paws
-                    ....
-                </div>
-            </ErrorMessage>
-        );
-    }
     return (
         <ul className="cars__cards">
-            {posts.results.map((card: CharForCards) => (
-                <ApiCard
-                    key={card.id}
-                    name={card.name}
-                    image={card.image}
-                    created={card.created}
-                    id={card.id}
-                    location={card.location}
-                    gender={card.gender}
-                    status={card.status}
-                />
-            ))}
+            {posts.results.map(
+                (card: Pick<CharForCards, 'name' | 'image' | 'id'>) => (
+                    <ApiCard
+                        key={card.id}
+                        name={card.name}
+                        image={card.image}
+                        id={card.id}
+                    />
+                )
+            )}
         </ul>
     );
 }

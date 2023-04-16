@@ -18,3 +18,7 @@ export type TFormAnswers = IFormElementsValues[];
 export interface ISearchInput {
     value: string;
 }
+
+export interface IFormArray {
+    formResults: IFormElementsValues[];
+}

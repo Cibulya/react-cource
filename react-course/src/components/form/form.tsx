@@ -1,10 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { SubmitHandler } from 'react-hook-form/dist/types';
-import { IFormElementsValues, TFormAnswers } from '../../inerfaces/formtypes';
+import { useAppDispatch } from '../../hooks/redux';
+import { IFormElementsValues } from '../../inerfaces/formtypes';
 import { options } from '../../inerfaces/inputTypes';
-import FormAnswer from '../formcardanswer/formcardanswer';
+import { formSlice } from '../../rtk/store/reducers/FormSlice';
 import './form.scss';
 
 function FormComponent() {
@@ -13,7 +14,6 @@ function FormComponent() {
         handleSubmit,
         reset,
         formState,
-        // без этой штуки не работает очистка формулы!
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         formState: { isSubmitSuccessful, errors },
     } = useForm<IFormElementsValues>({
@@ -22,8 +22,8 @@ function FormComponent() {
         },
     });
 
-    const formAnswers: TFormAnswers = [];
-    const [answers, setAnswers] = useState(formAnswers);
+    const { addFormAnswers } = formSlice.actions;
+    const dispatch = useAppDispatch();
 
     const onSubmit: SubmitHandler<IFormElementsValues> = (data) => {
         const fileImage = URL.createObjectURL(data.file[0] as unknown as Blob);
@@ -33,7 +33,7 @@ function FormComponent() {
             newDataWithFile.checkbox = 'truth';
         }
         newDataWithFile.file = fileImage;
-        setAnswers([...answers, newDataWithFile]);
+        dispatch(addFormAnswers(newDataWithFile));
     };
 
     useEffect(() => {
@@ -155,20 +155,6 @@ function FormComponent() {
                 </label>
                 <input className="form__submit" type="submit" />
             </form>
-            <div className="form__answers">
-                {answers.map((answer) => (
-                    <FormAnswer
-                        key={answer.id}
-                        id={answer.id}
-                        name={answer.name}
-                        date={answer.date}
-                        checkbox={answer.checkbox}
-                        pill={answer.pill}
-                        file={answer.file}
-                        fruits={answer.fruits}
-                    />
-                ))}
-            </div>
         </div>
     );
 }

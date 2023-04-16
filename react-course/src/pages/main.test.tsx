@@ -1,18 +1,31 @@
 import { render, screen } from '@testing-library/react';
+import { Provider } from 'react-redux';
 import { describe, it } from 'vitest';
 import ApiCardList from '../components/card-list-for-api/cardListForApi';
 import CardList from '../components/cardlist/cardList';
 import { firstfetch, mortySearch, rickSearch } from '../mocks/handlers';
+import { setupStore } from '../rtk/store/store';
 import MainPage from './main';
 
+const store = setupStore();
+
 describe('Renders main page', () => {
-    it('Renders About TEXT', () => {
-        render(<MainPage />);
-        const searchInput = screen.getByRole('input');
-        expect(searchInput).toBeInTheDocument();
+    it('Renders Main page', async () => {
+        render(
+            <Provider store={store}>
+                <MainPage />
+            </Provider>
+        );
+
+        const searchInput = screen.queryByRole('input');
+        expect(searchInput).not.toBeNull();
     });
     it('Renders card list', () => {
-        render(<CardList />);
+        render(
+            <Provider store={store}>
+                <CardList />
+            </Provider>
+        );
         const cardList = screen.getByRole('list');
         expect(cardList).toBeInTheDocument();
         expect(cardList).toHaveClass('cars__cards');
