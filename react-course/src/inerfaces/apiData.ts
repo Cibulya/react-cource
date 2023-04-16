@@ -1,5 +1,4 @@
 export interface CardsState {
-    cards: Character[];
     searchQuery: string;
 }
 

@@ -1,19 +1,17 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
-import { ApiData } from '../inerfaces/apiData';
-import RequestLinks from './urlsToRequest';
+import { ApiData, Character } from '../inerfaces/apiData';
+import RequestLinks from './RequestLinks';
 
 const cardsAPI = createApi({
     reducerPath: 'cardsAPI',
     baseQuery: fetchBaseQuery({ baseUrl: RequestLinks.firstFetchCopy }),
-    tagTypes: ['results', 'error'],
     endpoints: (build) => ({
         filterFetch: build.query<ApiData, string>({
             query: (name: string) => ({
-                url: `/character`,
-                name: `${name && `?name=${name}`}`,
+                url: `/character${name && `?name=${name}`}`,
             }),
         }),
-        singleCardFetch: build.query({
+        singleCardFetch: build.query<Character[], string>({
             query: (id: string) => ({
                 url: `/character/${id}`,
             }),

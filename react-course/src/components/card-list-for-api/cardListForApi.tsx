@@ -2,6 +2,9 @@ import { CharForCards, ResultsData } from '../../inerfaces/apiData';
 import ApiCard from '../card-for-api/card-for-api';
 
 function ApiCardList(posts: ResultsData) {
+    if (posts.results.length === 0) {
+        return <div>Error</div>;
+    }
     return (
         <ul className="cars__cards">
             {posts.results.map(

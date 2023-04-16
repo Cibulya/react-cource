@@ -25,7 +25,7 @@ function SearchInput(): JSX.Element {
                 onKeyDown={onKeyEnter}
                 defaultValue={searchQuery}
                 className="search"
-                type="text"
+                type="search"
                 placeholder="Search something"
             />
         </form>

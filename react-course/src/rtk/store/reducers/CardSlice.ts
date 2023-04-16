@@ -2,7 +2,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CardsState } from '../../../inerfaces/apiData';
 
 const initialState: CardsState = {
-    cards: [],
     searchQuery: '',
 };
 
