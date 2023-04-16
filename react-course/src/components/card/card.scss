@@ -1,0 +1,14 @@
+.car__card {
+  font-family: "Acme", sans-serif;
+  display: grid;
+  grid-template-columns: 1fr;
+  color: orange;
+  line-height: 22px;
+}
+
+.car__name {
+}
+
+.car__image {
+  max-width: 300px;
+}
