@@ -5,10 +5,10 @@ import { useAppSelector } from '../hooks/redux';
 function FormPage() {
     const { formResults } = useAppSelector((state) => state.formReducer);
     return (
-        <>
+        <div>
             <FormComponent />
             <FormAnswersList formResults={formResults} />
-        </>
+        </div>
     );
 }
 

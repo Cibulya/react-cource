@@ -3,7 +3,7 @@ import './navigation.scss';
 
 function HeaderNav() {
     return (
-        <nav className="header__nav">
+        <nav className="header__nav" role="navigation">
             <Link to="/" className="nav__link">
                 Main
             </Link>

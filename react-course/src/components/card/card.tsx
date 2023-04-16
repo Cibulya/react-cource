@@ -3,7 +3,7 @@ import './card.scss';
 
 function Card({ name, picture, year, drive, enginePower, about }: Car) {
     return (
-        <li className="car__card">
+        <li className="car__card" role="listitem">
             <p className="car__name">{name}</p>
             <img src={picture} alt="carImage" className="car__image" />
             <div className="car__spec">

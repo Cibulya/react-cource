@@ -16,10 +16,8 @@ describe('Renders main page', () => {
                 <MainPage />
             </Provider>
         );
-
         const searchInput = screen.getByRole('input');
         expect(searchInput).toBeInTheDocument();
-        screen.debug();
     });
     it('Renders card list', () => {
         render(

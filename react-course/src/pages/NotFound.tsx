@@ -7,7 +7,7 @@ function NotFoundPage() {
             <p className="not-found-page__description">
                 Page 404 invalid route
             </p>
-            <Link className="not-found-page__link" to="/">
+            <Link role="navigation" className="not-found-page__link" to="/">
                 To Main Page
             </Link>
         </div>

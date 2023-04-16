@@ -11,7 +11,7 @@ const cardsAPI = createApi({
                 url: `/character${name && `?name=${name}`}`,
             }),
         }),
-        singleCardFetch: build.query<Character[], string>({
+        singleCardFetch: build.query<Character, string>({
             query: (id: string) => ({
                 url: `/character/${id}`,
             }),

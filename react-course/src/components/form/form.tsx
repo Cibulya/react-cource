@@ -51,7 +51,11 @@ function FormComponent() {
 
     return (
         <div>
-            <form className="form" onSubmit={handleSubmit(onSubmit)}>
+            <form
+                className="form"
+                onSubmit={handleSubmit(onSubmit)}
+                role="form"
+            >
                 <p className="form__title">Form</p>
                 <label htmlFor="name">
                     <span>Name:</span>
@@ -153,7 +157,7 @@ function FormComponent() {
                     />
                     <p className="form__error">{errors.file?.message}</p>
                 </label>
-                <input className="form__submit" type="submit" />
+                <input className="form__submit" type="submit" value="Submit" />
             </form>
         </div>
     );
