@@ -1,5 +1,5 @@
 import { rest } from 'msw';
-import { RequestLinks } from '../api/RequestLinks';
+import RequestLinks from '../api/RequestLinks';
 import { Character } from '../inerfaces/apiData';
 
 export const firstfetch: Character[] = [

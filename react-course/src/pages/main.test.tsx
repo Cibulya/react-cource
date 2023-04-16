@@ -17,8 +17,9 @@ describe('Renders main page', () => {
             </Provider>
         );
 
-        const searchInput = screen.queryByRole('input');
-        expect(searchInput).not.toBeNull();
+        const searchInput = screen.getByRole('input');
+        expect(searchInput).toBeInTheDocument();
+        screen.debug();
     });
     it('Renders card list', () => {
         render(
