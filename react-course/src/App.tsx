@@ -1,5 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import Header from './components/header/header';
+
+import './index.scss';
 import AboutUs from './pages/aboutus';
 import CarsPage from './pages/carsPage';
 import FormPage from './pages/form';
