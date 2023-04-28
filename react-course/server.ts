@@ -1,6 +1,5 @@
 import express from 'express';
 import fs from 'fs';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { createServer } from 'vite';
 
 const port = process.env.PORT || 5173;
@@ -18,7 +17,7 @@ app.use(vite.middlewares);
 
 app.use('/', async (req, res) => {
     try {
-        const url = req.originalUrl.replace(base, '');
+        const url = req.originalUrl;
         let template = fs.readFileSync('./index.html', 'utf-8');
         template = await vite.transformIndexHtml(url, template);
         const parts = template.split('<!--app-html-->');

@@ -8,7 +8,7 @@ import { setupStore } from './rtk/store/store';
 
 async function hydration() {
     const store = setupStore((window as IWindow).PRELOADED_STATE);
-
+    delete (window as IWindow).PRELOADED_STATE;
     hydrateRoot(
         document.getElementById('root') as HTMLElement,
         <React.StrictMode>
@@ -19,6 +19,5 @@ async function hydration() {
             </Provider>
         </React.StrictMode>
     );
-    delete (window as IWindow).PRELOADED_STATE;
 }
 hydration();

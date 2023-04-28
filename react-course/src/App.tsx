@@ -1,5 +1,7 @@
+import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Header from './components/header/header';
+import Loading from './components/loadingThing/loading';
 
 import './index.scss';
 import AboutUs from './pages/aboutus';
@@ -12,13 +14,15 @@ function App() {
     return (
         <>
             <Header />
-            <Routes>
-                <Route path="/" element={<MainPage />} />
-                <Route path="/about" element={<AboutUs />} />
-                <Route path="/form" element={<FormPage />} />
-                <Route path="*" element={<NotFoundPage />} />
-                <Route path="/cars" element={<CarsPage />} />
-            </Routes>
+            <Suspense fallback={<Loading />}>
+                <Routes>
+                    <Route path="/" element={<MainPage />} />
+                    <Route path="/about" element={<AboutUs />} />
+                    <Route path="/form" element={<FormPage />} />
+                    <Route path="*" element={<NotFoundPage />} />
+                    <Route path="/cars" element={<CarsPage />} />
+                </Routes>
+            </Suspense>
         </>
     );
 }

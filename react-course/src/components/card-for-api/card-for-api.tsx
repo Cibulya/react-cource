@@ -10,7 +10,7 @@ function ApiCard({
 }: Pick<CharForCards, 'name' | 'image' | 'id'>) {
     const { isOpen, toggle } = useModal();
     return (
-        <li onClick={toggle} role="button">
+        <li className="cards__card" onClick={toggle} role="button">
             <p>{name}</p>
             <img src={image} alt={name} />
             {isOpen && <Modal isOpen={isOpen} toggle={toggle} id={id} />}
