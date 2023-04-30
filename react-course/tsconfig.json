@@ -23,9 +23,8 @@
         "server.ts",
         "cypress.config.ts",
         "cypress",
-        "./unitTests.ts"
+        "./src/unittests.ts"
     ],
-
     "references": [{ "path": "./tsconfig.node.json" }],
     "ts-node": { "esm": true }
 }

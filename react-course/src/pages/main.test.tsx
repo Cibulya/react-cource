@@ -28,19 +28,4 @@ describe('Renders main page', () => {
         expect(cardList[0]).toHaveClass('cars__cards');
         expect(cardList[0]).toContainHTML('li');
     });
-    // test('Get all Data first Fetch', async () => {
-    //     const { findByText } = render(<ApiCardList results={firstfetch} />);
-    //     expect(await findByText(/Rick Sanchez/i)).toBeInTheDocument();
-    // });
-    // test('Get Morty cards', async () => {
-    //     const { findByText } = render(<ApiCardList results={mortySearch} />);
-    //     expect(await findByText(/Alien Morty/i)).toBeInTheDocument();
-    //     expect(await findByText(/Aqua Morty/i)).toBeInTheDocument();
-    //     expect(await findByText(/Morty Smith/i)).toBeInTheDocument();
-    //     expect(await findByText(/Big Head Morty/i)).toBeInTheDocument();
-    // });
-    // test('Get Ricks cards', async () => {
-    //     const { findByText } = render(<ApiCardList results={rickSearch} />);
-    //     expect(await findByText(/Rick Sanchez/i)).toBeInTheDocument();
-    // });
 });

@@ -9,6 +9,7 @@ import CarsPage from './pages/carsPage';
 import FormPage from './pages/form';
 import MainPage from './pages/main';
 import NotFoundPage from './pages/NotFound';
+import SfxPage from './pages/SfxPage';
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                     <Route path="/form" element={<FormPage />} />
                     <Route path="*" element={<NotFoundPage />} />
                     <Route path="/cars" element={<CarsPage />} />
+                    <Route path="/sfx" element={<SfxPage />} />
                 </Routes>
             </Suspense>
         </>

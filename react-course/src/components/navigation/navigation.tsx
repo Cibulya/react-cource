@@ -16,6 +16,9 @@ function HeaderNav() {
             <Link to="/cars" className="nav__link">
                 Cars
             </Link>
+            <Link to="/sfx" className="nav__link">
+                Dont click on me!
+            </Link>
         </nav>
     );
 }
