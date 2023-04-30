@@ -17,7 +17,6 @@ function SfxButton(props: ISfxItem) {
             setPlaying(false);
         }, duration);
     };
-
     return (
         <button
             onClick={playS}

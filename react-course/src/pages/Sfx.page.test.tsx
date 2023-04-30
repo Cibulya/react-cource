@@ -12,7 +12,9 @@ describe('AboutUs', () => {
                 <SfxPage />
             </Provider>
         );
-        const sfxTitle = screen.getAllByText('Ultra magic SFX Goofy machine');
+        const sfxTitle = screen.getAllByText(
+            'Ultra magic SSR Goofy sound machine'
+        );
         expect(sfxTitle[0]).toBeInTheDocument();
         const imageButton = screen.getAllByAltText(
             '/src/assets/wierdSfx/goofy.png'
