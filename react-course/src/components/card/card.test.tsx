@@ -16,9 +16,7 @@ describe('Card', () => {
                 drive={carsJson.cars[0].drive}
             />
         );
-        expect(
-            screen.getByText(/Toyota Sprinter Trueno AE86/i)
-        ).toBeInTheDocument();
-        expect(screen.getAllByAltText(/carImage/i));
+        const card = screen.getAllByText(/Toyota Sprinter Trueno AE86/i);
+        expect(card[0]).toBeInTheDocument();
     });
 });

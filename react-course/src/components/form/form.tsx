@@ -67,6 +67,7 @@ function FormComponent() {
                                 message: 'Min length 5 symbols',
                             },
                         })}
+                        data-cy="name"
                         className="form__input"
                         type="text"
                         placeholder="Enter your name"
@@ -82,6 +83,7 @@ function FormComponent() {
                             required:
                                 'This field is required,please choose correct date)',
                         })}
+                        data-cy="date"
                         type="date"
                         name="date"
                     />
@@ -97,6 +99,7 @@ function FormComponent() {
                         })}
                         type="checkbox"
                         name="checkbox"
+                        data-cy="checkbox"
                     />
                     <p className="form__error">{errors.checkbox?.message}</p>
                 </label>
@@ -111,6 +114,7 @@ function FormComponent() {
                             type="radio"
                             value="Red"
                             name="pill"
+                            data-cy="red"
                         />
                         <p className="form__error">{errors.pill?.message}</p>
                     </label>
@@ -133,6 +137,7 @@ function FormComponent() {
                         required:
                             'This field is requred,please choose one of options)',
                     })}
+                    data-cy="select"
                     className="form__select"
                     name="fruits"
                 >
@@ -154,10 +159,16 @@ function FormComponent() {
                         type="file"
                         name="file"
                         accept="image/*"
+                        data-cy="file"
                     />
                     <p className="form__error">{errors.file?.message}</p>
                 </label>
-                <input className="form__submit" type="submit" value="Submit" />
+                <input
+                    data-cy="submit"
+                    className="form__submit"
+                    type="submit"
+                    value="Submit"
+                />
             </form>
         </div>
     );

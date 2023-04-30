@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import { describe, it } from 'vitest';
 import { Provider } from 'react-redux';
+import { describe, it } from 'vitest';
 import { setupStore } from '../../rtk/store/store';
 import SearchInput from './search';
 
@@ -12,8 +12,7 @@ describe('Cinput', () => {
                 <SearchInput />
             </Provider>
         );
-        expect(
-            screen.getByPlaceholderText('Search something')
-        ).toBeInTheDocument();
+        const search = screen.getAllByPlaceholderText(/Search something/i);
+        expect(search[0]).toHaveClass('search');
     });
 });

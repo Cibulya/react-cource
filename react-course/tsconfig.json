@@ -22,7 +22,8 @@
         "src",
         "server.ts",
         "cypress.config.ts",
-        "cypress"
+        "cypress",
+        "./unitTests.ts"
     ],
 
     "references": [{ "path": "./tsconfig.node.json" }],

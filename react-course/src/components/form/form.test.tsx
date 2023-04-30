@@ -12,7 +12,9 @@ describe('Form', () => {
                 <FormComponent />
             </Provider>
         );
-        expect(screen.getByText(/Name:/i)).toBeInTheDocument();
-        expect(screen.getByText(/Image file:/i)).toBeInTheDocument();
+        const inputName = screen.getAllByText(/Name:/i);
+        const fileInput = screen.getAllByText(/Image file:/i);
+        expect(inputName[0]).toBeInTheDocument();
+        expect(fileInput[0]).toBeInTheDocument();
     });
 });

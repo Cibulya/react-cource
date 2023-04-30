@@ -1,21 +1,20 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/// <reference types="vitest" />
-/// <reference types="vite/client" />
-
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
-
+import istanbul from 'vite-plugin-istanbul';
+import { test } from './unitTests';
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [react()],
-    test: {
-        globals: true,
-        environment: 'jsdom',
-        setupFiles: ['./src/setupTests.ts'],
-        coverage: {
-            enabled: true,
-            provider: 'c8',
-            all: true,
-        },
+    plugins: [
+        react(),
+        istanbul({
+            cypress: true,
+            requireEnv: false,
+        }),
+    ],
+    server: {
+        host: true,
+        port: 5173,
     },
+    build: { minify: false, sourcemap: 'inline' },
+    test,
 });
